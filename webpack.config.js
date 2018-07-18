@@ -26,6 +26,6 @@ module.exports = {
   plugins: [
     // This will enforce TypeScript compilation without errors.
     new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({ title: 'Maze generator', hash: true }),
+    new HtmlWebpackPlugin({ title: 'Conway\'s Game of Life', hash: true }),
   ]
 }
