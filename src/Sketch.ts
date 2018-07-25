@@ -11,47 +11,22 @@ const sketchSize = 800;
 const cellSize = 20;
 const grid = Grid.build(Math.floor(sketchSize / cellSize));
 
+let template: string[];
+
+sketch.preload = () => {
+  template = sketch.loadStrings("./init.txt")
+}
+
 sketch.setup = () => {
   sketch.createCanvas(sketchSize, sketchSize);
   sketch.frameRate(10);
-  grid.init([
-    new Position(1, 5),
-    new Position(1, 6),
-    new Position(2, 5),
-    new Position(2, 6),
-    new Position(12, 4),
-    new Position(13, 3),
-    new Position(14, 3),
-    new Position(15, 6),
-    new Position(16, 4),
-    new Position(16, 8),
-    new Position(17, 5),
-    new Position(17, 6),
-    new Position(17, 7),
-    new Position(18, 6),
-    new Position(23, 2),
-    new Position(25, 1),
-    new Position(25, 2),
-    new Position(35, 3),
-    new Position(35, 4),
-    new Position(36, 3),
-    new Position(36, 4),
-    new Position(21, 5),
-    new Position(22, 5),
-    new Position(21, 4),
-    new Position(22, 4),
-    new Position(21, 3),
-    new Position(22, 3),
-    new Position(23, 6),
-    new Position(25, 6),
-    new Position(25, 7),
-    new Position(11, 5),
-    new Position(11, 6),
-    new Position(11, 7),
-    new Position(12, 8),
-    new Position(13, 9),
-    new Position(14, 9),
-  ]);
+  const init = [];
+  for (let y = 0; y < template.length; y++) {
+    for (let x = 0; x < template[y].length; x++) {
+      if (template[y][x] === "X") { init.push(new Position(x, y)) }
+    }
+  }
+  grid.init(init);
 }
 
 sketch.draw = () => {
