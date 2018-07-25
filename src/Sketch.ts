@@ -14,7 +14,7 @@ const grid = Grid.build(Math.floor(sketchSize / cellSize));
 let template: string[];
 
 sketch.preload = () => {
-  template = sketch.loadStrings("./init.txt")
+  template = sketch.loadStrings("./template2.txt")
 }
 
 sketch.setup = () => {
